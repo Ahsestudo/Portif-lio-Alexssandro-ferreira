@@ -29,25 +29,6 @@ body {
     display: block;
     /* Remove espaços em branco extras abaixo da imagem */
 }
-
-/* Imagem de perfil sobreposta à imagem de capa */
-.perfil {
-    position: absolute;
-    bottom: 650px;
-    /* Sobe a imagem para sobrepor a capa (ajustável) */
-    left: 30px;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    /* Deixa a imagem redonda */
-    border: 4px solid white;
-    /* Borda branca ao redor */
-    object-fit: cover;
-    background-color: white;
-    z-index: 2;
-    /* Garante que fique acima da capa */
-}
-
 /* Estilização para o cabeçalho (não tem efeito direto sem position) */
 header {
     top: 0;

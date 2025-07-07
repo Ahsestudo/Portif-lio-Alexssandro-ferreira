@@ -26,23 +26,6 @@ body {
     object-fit: cover;
     display: block;
 }
-
-/* Estilização da imagem de perfil */
-.perfil {
-    position: absolute;
-    bottom: 650px;
-    /* posiciona acima da capa */
-    left: 30px;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    /* forma circular */
-    border: 4px solid white;
-    object-fit: cover;
-    background-color: white;
-    z-index: 2;
-}
-
 /* Container dos links de navegação */
 .links {
     text-align: center;
