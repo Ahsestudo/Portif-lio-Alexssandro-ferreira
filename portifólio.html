@@ -1,0 +1,272 @@
+<!DOCTYPE html> <!-- Define o tipo do documento como HTML5 -->
+<html lang="pt-br"> <!-- Define o idioma da página como português (Brasil) -->
+<head>
+  <meta charset="UTF-8" /> <!-- Define a codificação de caracteres como UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Garante que o layout seja responsivo em dispositivos móveis -->
+  <title>Portifólio - Alexssandro Ferreira</title> <!-- Título da página exibido na aba do navegador -->
+  <link rel="stylesheet" href="CSS/portifólio.css" />
+</head>
+
+<body>
+  <!-- Cabeçalho com imagem de perfil sobreposta à imagem de capa -->
+  <header class="grid-container">
+    <img class="perfil" src="IMAGENS/perfil-AlexPrancheta-1.png" alt="Perfil" />
+    <div class="container">
+      <img class="capa" src="IMAGENS/capa-do-be2.png" alt="Capa" />
+    </div>
+  </header>
+
+  <!-- Menu de navegação com título e links -->
+  <div class="links">
+    <h1>Alexssandro Ferreira</h1>
+    <ul>
+      <li><a href="index.html">Sobre mim</a></li>
+      <li><a href="formação.html">Formação</a></li>
+      <li><a href="portifólio.html">Portfólio</a></li>
+      <li><a href="contatos.html">Contatos</a></li>
+    </ul>
+  </div>
+
+  <!-- Seção do portfólio com projetos Python, SQL e design -->
+  <section class="portfolio">
+  <h2 class="title">Sistema de Cadastro de Livros (Python)</h2>
+
+  <div style="width: 95%; margin: 40px auto; background-color: #1e1e1e; padding: 20px; border-radius: 10px; overflow-x: auto; color: white;">
+    <pre><code class="language-python">
+# Exibe uma mensagem inicial
+print("Bem-vindo a Livraria do Alexssandro Ferreira")
+
+# Lista para armazenar os livros cadastrados
+lista_livro = []
+
+# ID que será incrementado automaticamente para cada novo livro
+id_global = 0
+
+# Função para cadastrar um livro
+def cadastrar_livro(id):
+    print("-"*36)
+    print("-"*4, "MENU CADASTRAR LIVRO", "-"*10)
+    print(f"ID do livro: {id}")  # Mostra o ID gerado
+    nome = input("Digite o nome do livro: ")
+    autor = input("Digite o nome do autor: ")
+    editora = input("Digite o nome da editora: ")
+
+    # Cria um dicionário com os dados do livro
+    livro = {
+        "id": id,
+        "nome": nome,
+        "autor": autor,
+        "editora": editora
+    }
+
+    # Adiciona o livro à lista
+    lista_livro.append(livro)
+    print("Livro cadastrado com sucesso!\n")
+
+# Função para consultar livros
+def consultar_livro():
+    while True:
+        print("-"*36)
+        print("-"*5, "MENU CONSULTA LIVRO", "-"*10)
+        print("1 - Consultar Todos os Livros")
+        print("2 - Consultar Livro por ID")
+        print("3 - Consultar Livro(s) por Autor")
+        print("4 - Retornar ao Menu Principal")
+        opcao = input(">> ").strip()
+
+        # Mostra todos os livros
+        if opcao == "1":
+            if not lista_livro:
+                print("Nenhum livro cadastrado!")
+                continue
+            print("-"*36)
+            for livro in lista_livro:
+                print(f"ID: {livro['id']}")
+                print(f"Nome: {livro['nome']}")
+                print(f"Autor: {livro['autor']}")
+                print(f"Editora: {livro['editora']}")
+                print("-"*16)
+
+        # Consulta por ID
+        elif opcao == "2":
+            try:
+                id_busca = int(input("Digite o ID do livro: "))
+                encontrado = False
+                for livro in lista_livro:
+                    if livro["id"] == id_busca:
+                        print("-"*8, "LIVRO ENCONTRADO", "-"*10)
+                        print(f"ID: {livro['id']}")
+                        print(f"Nome: {livro['nome']}")
+                        print(f"Autor: {livro['autor']}")
+                        print(f"Editora: {livro['editora']}")
+                        encontrado = True
+                        break
+                if not encontrado:
+                    print("Livro não encontrado!")
+            except ValueError:
+                print("ID deve ser um número!")
+
+        # Consulta por autor
+        elif opcao == "3":
+            autor_busca = input("Digite o nome do autor: ").strip()
+            encontrados = [livro for livro in lista_livro if livro["autor"].lower() == autor_busca.lower()]
+            if encontrados:
+                print(f"--- LIVROS DO AUTOR {autor_busca.upper()} ---")
+                for livro in encontrados:
+                    print(f"ID: {livro['id']}")
+                    print(f"Nome: {livro['nome']}")
+                    print(f"Autor: {livro['autor']}")
+                    print(f"Editora: {livro['editora']}")
+                    print("-"*30)
+            else:
+                print(f"Nenhum livro encontrado para o autor {autor_busca}")
+
+        # Voltar ao menu principal
+        elif opcao == "4":
+            break
+        else:
+            print("Opção inválida!")
+
+# Função para remover um livro pelo ID
+def remover_livro():
+    print("-"*36)
+    print("-"*6, "MENU REMOVER LIVRO", "-"*10)
+    if not lista_livro:
+        print("Nenhum livro cadastrado para remover!")
+        return
+    while True:
+        try:
+            id_remover = int(input("Digite o ID do livro a ser removido: "))
+            for i in range(len(lista_livro)):
+                livro = lista_livro[i]
+                if livro["id"] == id_remover:
+                    lista_livro.pop(i)
+                    print("Livro removido com sucesso!")
+                    return
+        except ValueError:
+            print("ID deve ser um número!")
+
+# Loop principal do sistema
+while True:
+    print("-"*36)
+    print("-"*10, "MENU PRINCIPAL", "-"*10)
+    print("1 - Cadastrar Livro")
+    print("2 - Consultar Livro(s) por Autor")
+    print("3 - Remover Livro")
+    print("4 - Sair")
+    opcao = input(">> ").strip()
+
+    if opcao == "1":
+        id_global += 1  # Incrementa o ID automaticamente
+        cadastrar_livro(id_global)
+    elif opcao == "2":
+        consultar_livro()
+    elif opcao == "3":
+        remover_livro()
+    elif opcao == "4":
+        print("Encerrando o programa...")
+        break
+    else:
+        print("Opção inválida! Digite um número de 1 a 4.")
+    </code></pre>
+  </div>
+
+  <h2 class="title">Banco de Dados - Locadora de Veículos (MySQL)</h2>
+  <div style="width: 95%; margin: 40px auto; background-color: #1e1e1e; padding: 20px; border-radius: 10px; overflow-x: auto; color: white;">
+    <pre><code class="language-sql">
+-- Criação do banco de dados para a locadora
+create database LocadoraVeiculo;
+
+-- Seleciona o banco de dados para uso
+use LocadoraVeiculo;
+
+-- Criação da tabela de clientes
+create table Cliente (
+    idCliente int not null, -- ID único do cliente
+    CPF varchar(20) not null,
+    nome varchar(50) not null,
+    telefone varchar(20) not null,
+    email varchar(50) not null,
+    endereco varchar(100) not null,
+    primary key (idCliente)
+);
+
+-- Criação da tabela de pagamentos
+create table Pagamento (
+    idPagamento int not null,
+    forma enum ('Cartão', 'Pix', 'Dinheiro') not null,
+    dataPagamento date not null,
+    valorTotal decimal(7,2) not null,
+    estado enum('Pago', 'Pendente') not null,
+    primary key(idPagamento)
+);
+
+-- Criação da tabela de veículos
+create table Veiculo (
+    idVeiculo int not null,
+    modelo varchar(50) not null,
+    marca varchar(50) not null,
+    ano int not null,
+    placa varchar(10),
+    valorDiaria decimal(7,2),
+    estado enum('Disponível','Alugado','Manutencao') not null,
+    primary key (idVeiculo)
+);
+
+-- Criação da tabela de manutenções
+create table Manutencao (
+    idManutencao int not null,
+    idVeiculo int not null,
+    descricao varchar(100) not null,
+    dataManutencao date not null,
+    custo decimal(7,2) not null,
+    primary key(idManutencao),
+    foreign key(idVeiculo) references Veiculo(idVeiculo)
+);
+
+-- Criação da tabela de locações
+create table Locacao (
+    idLocacao int not null,
+    idCliente int not null,
+    idPagamento int not null,
+    dataInicio date not null,
+    dataFim date not null,
+    primary key(idLocacao),
+    foreign key(idCliente) references Cliente(idCliente),
+    foreign key(idPagamento) references Pagamento(idPagamento)
+);
+
+-- Criação da tabela de ligação entre locações e veículos
+create table LocacaoVeiculo (
+    idLocacao int not null,
+    idVeiculo int not null,
+    primary key(idLocacao, idVeiculo),
+    foreign key(idVeiculo) references Veiculo(idVeiculo),
+    foreign key(idLocacao) references Locacao(idLocacao)
+);
+    </code></pre>
+  </div>
+     <!-- Galeria de imagens com criações de design gráfico -->
+    <h2 class="title">Designer</h2>
+    <br><br>
+    <div class="imagens">
+      <!-- Imagens do portfólio de design -->
+      <img src="Cliente Fabricil/logo-duçuras-do-monster-final.png"/>
+      <img src="Cliente Fabricil/Mockup-logo-Doce-monsterPrancheta-3.png" alt="">
+      <img src="Cliente Fabricil/Mockup-logo-Doce-monsterPrancheta-4.png" alt="">
+      <img src="Cliente Fabricil/Mockup-logo-Doce-monsterPrancheta-5.png" alt="">
+      <img src="Cliente Fabricil/Mockup-logo-Doce-monsterPrancheta-6.png" alt="">
+      <img src="Cliente Fabricil/Mockup-logo-Doce-monsterPrancheta-2.png" alt="">
+
+      <!-- Botão com link para mais projetos no Behance -->
+      <a class="link" href="https://www.behance.net/ahsdesigner/projects">Mais Projetos>></a>
+    </div>
+  </section>
+
+  <!-- Rodapé com mensagem de agradecimento -->
+  <footer>
+    <h2>Volte sempre!</h2>
+    <h2>THANKS</h2>
+  </footer>
+</body>
+</html>

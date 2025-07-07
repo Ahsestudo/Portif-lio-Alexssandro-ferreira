@@ -1,0 +1,143 @@
+/* Zera margens e preenchimentos padrão e usa box-sizing para facilitar o controle do layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Define a fonte principal da página */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Container da imagem de capa */
+.container {
+    position: relative;
+    /* Permite posicionar elementos filhos de forma absoluta */
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    /* Oculta partes da imagem que ultrapassarem a altura */
+}
+
+/* Estiliza a imagem de capa para preencher todo o container */
+.capa {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Mantém proporção e cobre todo o espaço */
+    display: block;
+    /* Remove espaços em branco extras abaixo da imagem */
+}
+
+/* Imagem de perfil sobreposta à imagem de capa */
+.perfil {
+    position: absolute;
+    bottom: 650px;
+    /* Sobe a imagem para sobrepor a capa (ajustável) */
+    left: 30px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    /* Deixa a imagem redonda */
+    border: 4px solid white;
+    /* Borda branca ao redor */
+    object-fit: cover;
+    background-color: white;
+    z-index: 2;
+    /* Garante que fique acima da capa */
+}
+
+/* Estilização para o cabeçalho (não tem efeito direto sem position) */
+header {
+    top: 0;
+}
+
+/* Container dos links de navegação */
+.links {
+    text-align: center;
+    /* Centraliza os itens */
+    margin-top: 70px;
+    /* Espaçamento abaixo da imagem */
+}
+
+/* Espaçamento inferior do nome/título */
+.links h1 {
+    margin-bottom: 40px;
+}
+
+/* Lista de navegação (menu) horizontal */
+ul {
+    display: flex;
+    /* Coloca os itens em linha */
+    justify-content: center;
+    /* Centraliza os itens horizontalmente */
+    list-style-type: none;
+    /* Remove os marcadores de lista */
+    padding: 0;
+    margin: 0 auto;
+    gap: 30px;
+    /* Espaço entre os itens */
+}
+
+/* Estilo visual dos links do menu */
+li a {
+    text-decoration: none;
+    /* Remove sublinhado */
+    color: black;
+    padding: 15px 25px;
+    /* Espaçamento interno */
+    display: block;
+    transition: all 0.3s ease;
+    /* Suaviza efeitos de transição */
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    /* Bordas arredondadas */
+}
+
+/* Efeito ao passar o mouse sobre os links */
+li a:hover {
+    color: black;
+    font-size: 110%;
+    /* Aumenta o tamanho do texto */
+    background-color: aqua;
+    /* Muda a cor de fundo */
+}
+
+/* Define a cor dos links já visitados */
+a:visited {
+    color: black;
+}
+
+/* Estilo da seção principal "Sobre mim" */
+.sobre {
+    text-align: center;
+    padding: 50px;
+    width: 100%;
+    justify-content: center;
+    margin: auto;
+}
+
+/* Define margem inferior para os parágrafos */
+p {
+    margin-bottom: 10px;
+}
+
+/* Estilo do rodapé */
+footer {
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    background-color: aqua;
+    color: rgba(54, 27, 66, 0.966);
+    /* Cor escura do texto */
+    padding: 20px;
+    font-size: 22px;
+}
+.title {
+    background-color: aqua;
+    width: 100%;
+    height: 80px;
+    padding: 30px;
+    border-radius: 0px;
+}

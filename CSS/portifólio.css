@@ -1,0 +1,173 @@
+/* Zera as margens e paddings de todos os elementos e define box-sizing como border-box */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Define a fonte padrão do corpo da página */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Container da imagem de capa com altura fixa e posição relativa */
+.container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+/* Estilo da imagem de capa, ocupando todo o container */
+.capa {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Estilo da imagem de perfil posicionada sobre a capa */
+.perfil {
+    position: absolute;
+    bottom: 650px;
+    left: 30px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid white;
+    object-fit: cover;
+    background-color: white;
+    z-index: 2;
+}
+
+/* Header sem efeito visual pois falta position */
+header {
+    top: 0;
+}
+
+/* Estilização do container dos links de navegação */
+.links {
+    text-align: center;
+    margin-top: 70px;
+}
+
+/* Espaçamento inferior do título principal */
+.links h1 {
+    margin-bottom: 40px;
+}
+
+/* Lista de navegação centralizada em linha horizontal */
+ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+/* Estilo dos links de navegação */
+li a {
+    text-decoration: none;
+    color: black;
+    padding: 15px 25px;
+    display: block;
+    transition: all 0.3s ease;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+/* Efeito visual ao passar o mouse sobre os links */
+li a:hover {
+    color: black;
+    font-size: 110%;
+    background-color: aqua;
+}
+
+/* Mantém a cor preta para links já visitados */
+a:visited {
+    color: black;
+}
+
+/* Estilização da seção "Sobre", com centralização e largura reduzida */
+.sobre {
+    text-align: center;
+    padding: 50px;
+    width: 80%;
+    justify-content: center;
+    margin: auto;
+}
+
+/* Espaçamento entre parágrafos */
+p {
+    margin-bottom: 10px;
+}
+
+/* Estilização do rodapé com cor de fundo e centralização */
+footer {
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    background-color: aqua;
+    color: rgba(54, 27, 66, 0.966);
+    padding: 10px;
+    font-size: 22px;
+}
+
+/* Container das imagens do portfólio com layout flexível e responsivo */
+.imagens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Estilo dos títulos das seções */
+h2 {
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 50px;
+}
+
+/* Estilo padrão das imagens exibidas na galeria */
+img {
+    width: 250px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito de zoom ao passar o mouse sobre as imagens */
+img:hover {
+    transform: scale(1.05);
+    box-shadow: 100px #111111;
+}
+
+/* Estilo do botão de link para mais projetos */
+.link {
+    background-color: aqua;
+    text-decoration: none;
+    width: 180px;
+    height: 110px;
+    padding: 30px;
+    padding-top: 30px;
+    border-radius: 0px 50px 0px 50px;
+    font-size: 25px;
+    margin: auto;
+    box-shadow: 2px black;
+}
+
+/* Efeito hover no botão de link com zoom e sombra */
+a.link:hover {
+    transform: scale(1.05);
+    box-shadow: 100px #111111;
+    transition: transform 0.3s ease;
+}
+
+.title {
+    background-color: aqua;
+    width: 100%;
+    height: 80px;
+    padding: 30px;
+    border-radius: 0px;
+}
